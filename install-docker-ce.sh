@@ -1,3 +1,6 @@
+#! /bin/bash 
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # remove any existing installation
 sudo yum remove docker docker-common docker-selinux docker-engine
 
@@ -5,7 +8,7 @@ sudo yum remove docker docker-common docker-selinux docker-engine
 # note that starting from docker-ce 17.06, docker team decided to keep RHEL users from installing community edition, 
 # so that they and redhat can make money from them.
 # this repository only have docker-ce up to 17.05
-sudo cp ./docker.repo /etc/yum.repos.d/
+sudo cp $SCRIPT_DIR/docker.repo /etc/yum.repos.d/
 
 # update repo cache and install docker
 sudo yum makecache fat && sudo yum install docker-engine docker-engine-selinux
